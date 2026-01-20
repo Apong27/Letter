@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Kenangan KKN</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts untuk font elegan -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="cover" class="section active">
+        <div class="cover-content">
+            <!-- Ilustrasi Amplop -->
+            <div class="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body"></div>
+            </div>
+            <h1>Surat Kenangan KKN</h1>
+            <p>Kepada seluruh anggota KKN, terima kasih atas pengalaman luar biasa yang telah kita lalui bersama. Klik tombol di bawah untuk membuka surat personal Anda.</p>
+            <button id="open-list">Buka Surat</button>
+        </div>
+    </div>
+
+    <div id="name-list" class="section">
+        <div class="list-content">
+            <h2>Pilih Nama Anda</h2>
+            <div id="names-container"></div>
+            <button id="back-to-cover">Kembali</button>
+        </div>
+    </div>
+
+    <div id="password-form" class="section">
+        <div class="form-content">
+            <h2>Masukkan Password untuk <span id="selected-name"></span></h2>
+            <input type="password" id="password-input" placeholder="Password">
+            <button id="submit-password">Buka Surat</button>
+            <p id="error-message" class="error"></p>
+            <button id="back-to-list">Kembali</button>
+        </div>
+    </div>
+
+    <div id="personal-letter" class="section">
+        <div class="letter-content">
+            <h2>Surat untuk <span id="letter-name"></span></h2>
+            <p id="letter-content"></p>
+            <button id="back-to-list-from-letter">Kembali</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
