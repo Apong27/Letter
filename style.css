@@ -281,3 +281,8 @@ input {
 .letter-content {
     margin: 0 auto;
 }
+
+}
+.blur-out {
+    filter: blur(5px);
+}
