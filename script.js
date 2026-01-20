@@ -165,7 +165,3 @@ function renderNameList() {
         });
         container.appendChild(button);
     }
-}
-.blur-out {
-    filter: blur(5px);
-}
