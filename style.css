@@ -100,11 +100,13 @@ h1 {
     color: #151002; 
 }
 
-h2 {
-    margin-top: 0;        /* naikkan ke atas */
-    margin-bottom: 25px;  /* jarak ke tombol */
-    text-align: center;  
+.list-content h2 {
+    text-align: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 
 p {
@@ -267,7 +269,14 @@ input {
     }
 }
 .cover-content,
-.list-content,
+.list-content {
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
 .form-content,
 .letter-content {
     margin: 0 auto;
