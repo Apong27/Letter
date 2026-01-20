@@ -81,18 +81,23 @@ const members = {
 
 // Fungsi untuk menampilkan section dengan transisi
 function showSection(sectionId) {
-    // Tambahkan blur ke section sebelumnya
-    document.querySelectorAll('.section.active').forEach(section => {
-        section.style.filter = 'blur(5px)';
+    const activeSections = document.querySelectorAll('.section.active');
+
+    activeSections.forEach(section => {
+        section.classList.add('blur-out');
     });
-    // Tunggu sedikit lalu ganti section
+
     setTimeout(() => {
-        document.querySelectorAll('.section').forEach(section => {
-            section.classList.remove('active');
+        activeSections.forEach(section => {
+            section.classList.remove('active', 'blur-out');
+            section.style.filter = ''; // ⬅️ RESET INLINE STYLE
         });
-        document.getElementById(sectionId).classList.add('active');
-    }, 400); // Sesuai dengan transisi CSS
+
+        const nextSection = document.getElementById(sectionId);
+        nextSection.classList.add('active');
+    }, 400);
 }
+
 
 // Inisialisasi
 document.addEventListener('DOMContentLoaded', () => {
@@ -160,4 +165,7 @@ function renderNameList() {
         });
         container.appendChild(button);
     }
+}
+.blur-out {
+    filter: blur(5px);
 }
