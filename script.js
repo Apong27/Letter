@@ -81,77 +81,49 @@ const members = {
 
 // Fungsi untuk menampilkan section dengan transisi
 function showSection(sectionId) {
-    const activeSections = document.querySelectorAll('.section.active');
-
-    activeSections.forEach(section => {
-        section.classList.add('blur-out');
+    // Tambahkan blur ke section sebelumnya
+    document.querySelectorAll('.section.active').forEach(section => {
+        section.style.filter = 'blur(5px)';
     });
-
+    // Tunggu sedikit lalu ganti section
     setTimeout(() => {
-        activeSections.forEach(section => {
-            section.classList.remove('active', 'blur-out');
-            section.style.filter = ''; // ⬅️ RESET INLINE STYLE
+        document.querySelectorAll('.section').forEach(section => {
+            section.classList.remove('active');
         });
-
-        const nextSection = document.getElementById(sectionId);
-        nextSection.classList.add('active');
-    }, 400);
+        document.getElementById(sectionId).classList.add('active');
+    }, 400); // Sesuai dengan transisi CSS
 }
-
 
 // Inisialisasi
 document.addEventListener('DOMContentLoaded', () => {
-    const openBtn = document.getElementById('open-list');
+    // Tombol buka daftar nama dengan animasi amplop
+    document.getElementById('open-list').addEventListener('click', () => {
+        const envelope = document.querySelector('.envelope');
+        envelope.classList.add('open'); // Trigger animasi amplop terbuka
+        setTimeout(() => {
+            showSection('name-list');
+            renderNameList();
+        }, 1000); // Tunggu animasi amplop selesai
+    });
 
-    if (openBtn) {
-        openBtn.addEventListener('click', () => {
-            const envelope = document.querySelector('.envelope');
-            if (envelope) envelope.classList.add('open');
+    // Tombol kembali ke cover
+    document.getElementById('back-to-cover').addEventListener('click', () => {
+        showSection('cover');
+        // Reset animasi amplop
+        document.querySelector('.envelope').classList.remove('open');
+    });
 
-            setTimeout(() => {
-                showSection('name-list');
-                renderNameList();
-            }, 1000);
-        });
-    }
-
-    const backCover = document.getElementById('back-to-cover');
-    if (backCover) {
-        backCover.addEventListener('click', () => {
-            showSection('cover');
-            const envelope = document.querySelector('.envelope');
-            if (envelope) envelope.classList.remove('open');
-        });
-    }
-
-    document.getElementById('back-to-list')?.addEventListener('click', () => {
+    // Tombol kembali ke list
+    document.getElementById('back-to-list').addEventListener('click', () => {
         showSection('name-list');
         document.getElementById('error-message').style.display = 'none';
     });
 
-    document.getElementById('back-to-list-from-letter')?.addEventListener('click', () => {
+    // Tombol kembali ke list dari surat
+    document.getElementById('back-to-list-from-letter').addEventListener('click', () => {
         showSection('name-list');
         sessionStorage.removeItem('selectedName');
     });
-
-    document.getElementById('submit-password')?.addEventListener('click', () => {
-        const selectedName = sessionStorage.getItem('selectedName');
-        const inputPassword = document.getElementById('password-input').value;
-        const errorMessage = document.getElementById('error-message');
-
-        if (members[selectedName] && members[selectedName].password === inputPassword) {
-            document.getElementById('letter-name').textContent = selectedName;
-            document.getElementById('letter-content').textContent = members[selectedName].letter;
-            showSection('personal-letter');
-            errorMessage.style.display = 'none';
-            document.getElementById('password-input').value = '';
-        } else {
-            errorMessage.textContent = 'Password salah. Coba lagi.';
-            errorMessage.style.display = 'block';
-        }
-    });
-});
-
 
     // Submit password
     document.getElementById('submit-password').addEventListener('click', () => {
@@ -188,3 +160,4 @@ function renderNameList() {
         });
         container.appendChild(button);
     }
+}
