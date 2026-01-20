@@ -81,18 +81,17 @@ const members = {
 
 // Fungsi untuk menampilkan section dengan transisi
 function showSection(sectionId) {
-    // Tambahkan blur ke section sebelumnya
-    document.querySelectorAll('.section.active').forEach(section => {
-        section.style.filter = 'blur(5px)';
+    // Hapus blur dari semua section dulu
+    document.querySelectorAll('.section').forEach(section => {
+        section.style.filter = 'none';
+        section.classList.remove('active');
     });
-    // Tunggu sedikit lalu ganti section
-    setTimeout(() => {
-        document.querySelectorAll('.section').forEach(section => {
-            section.classList.remove('active');
-        });
-        document.getElementById(sectionId).classList.add('active');
-    }, 400); // Sesuai dengan transisi CSS
+
+    // Aktifkan section tujuan
+    const target = document.getElementById(sectionId);
+    target.classList.add('active');
 }
+
 
 // Inisialisasi
 document.addEventListener('DOMContentLoaded', () => {
