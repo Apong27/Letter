@@ -103,7 +103,7 @@ h1, {
 .list-content h2 {
     margin-top: 0;        /* naikkan ke atas */
     margin-bottom: 25px;  /* jarak ke tombol */
-    text-align: center;
+    text-align: right;   /* ⬅️ geser ke kanan */
 }
 
 
