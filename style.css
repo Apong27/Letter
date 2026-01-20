@@ -94,16 +94,16 @@ body {
 }
 
 /* Judul dan teks */
-h1, {
+h1 {
     font-weight: 700;
     margin-bottom: 20px;
     color: #151002; 
 }
 
-.list-content h2 {
+h2 {
     margin-top: 0;        /* naikkan ke atas */
     margin-bottom: 25px;  /* jarak ke tombol */
-    text-align: right;   /* ⬅️ geser ke kanan */
+    text-align: center;   /* ⬅️ geser ke kanan */
 }
 
 
